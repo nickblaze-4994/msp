@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vijay Sridhar - MSPBots</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:#fafafa;color:#1a1a1a;
+      font-family:Georgia,'Times New Roman',serif;
+      line-height:1.8;font-size:16px;
+      padding:48px 24px 80px;
+    }
+    .wrap{max-width:640px;margin:0 auto}
+
+    .top{margin-bottom:48px}
+    h1{font-size:28px;font-weight:400;line-height:1.4;letter-spacing:-0.3px;margin-bottom:12px}
+    .lede{font-size:17px;color:#555;line-height:1.8;margin-bottom:0}
+
+    .divider{border:none;border-top:1px solid #e0e0e0;margin:40px 0}
+
+    h2{font-family:system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;
+      text-transform:uppercase;color:#888;margin-bottom:24px}
+
+    .product{border-bottom:1px solid #e8e8e8;padding:0 0 4px}
+    .product:last-child{border-bottom:none}
+    .product-head{
+      display:flex;align-items:baseline;gap:8px;
+      padding:16px 0;cursor:pointer;-webkit-tap-highlight-color:transparent;
+    }
+    .product-head:hover .p-name{color:#000}
+    .p-name{font-family:system-ui,sans-serif;font-size:16px;font-weight:600;color:#333;transition:color 0.15s}
+    .p-hint{font-family:system-ui,sans-serif;font-size:11px;color:#999;display:flex;align-items:center;gap:4px}
+    .p-hint::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#bbb;
+      animation:pulse 1.5s ease infinite}
+    @keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+    .product.open .p-hint{display:none}
+    .p-spacer{flex:1}
+    .p-one{font-size:14px;color:#999;font-family:system-ui,sans-serif}
+    .p-arrow{font-family:system-ui,sans-serif;font-size:13px;color:#bbb;transition:transform 0.2s;margin-left:8px}
+    .product.open .p-arrow{transform:rotate(180deg)}
+
+    .product-body{display:none;padding:0 0 20px}
+    .product.open .product-body{display:block}
+
+    .col-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px}
+    @media(max-width:580px){.col-pair{grid-template-columns:1fr}}
+
+    .col-label{font-family:system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;
+      text-transform:uppercase;margin-bottom:6px}
+    .col-label.msb{color:#2a7d5f}
+    .col-label.amz{color:#2563a8}
+
+    .col-text{font-size:15px;color:#444;line-height:1.75}
+    .col-metric{font-family:system-ui,sans-serif;font-size:13px;font-weight:600;margin-top:8px}
+    .col-metric.msb{color:#2a7d5f}
+    .col-metric.amz{color:#2563a8}
+
+    .customer-quote{
+      margin:0;padding:16px 20px;background:#f3f3f0;border-radius:4px;
+      font-size:14px;font-style:italic;color:#555;line-height:1.75;
+    }
+    .customer-quote .src{font-style:normal;font-size:12px;color:#999;margin-top:6px;
+      font-family:system-ui,sans-serif}
+
+    .bridge{margin-top:14px;font-size:15px;color:#666;line-height:1.75}
+
+    .fit-item{margin-bottom:28px}
+    .fit-text{font-size:16px;color:#333;line-height:1.8}
+    .fit-context{font-family:system-ui,sans-serif;font-size:12px;color:#888;margin-top:4px;font-style:italic}
+
+    .close-section{margin-top:48px}
+    .close-meta{font-family:system-ui,sans-serif;font-size:13px;color:#999}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <h1>Your four products. My five years building them.</h1>
+    <p class="lede">MSPBots has four core products. I've spent five years at Amazon building the same systems at scale. This takes 4 minutes to read.</p>
+  </div>
+
+  <hr class="divider"/>
+
+  <h2>The four products</h2>
+
+  <div class="product open" id="p1">
+    <div class="product-head" onclick="toggle('p1')">
+      <span class="p-name">AI Ticket Triage</span>
+      <span class="p-hint">click to expand</span>
+      <span class="p-spacer"></span>
+      <span class="p-one">classification + routing</span>
+      <span class="p-arrow">&#9662;</span>
+    </div>
+    <div class="product-body">
+      <div class="col-pair">
+        <div>
+          <div class="col-label msb">MSPBots</div>
+          <div class="col-text">Reads incoming support tickets using Azure OpenAI. Figures out the category, priority, and urgency. Routes to the right team. Filters spam, bundles duplicates. Routing rules written in plain English. Gets smarter from thumbs up/down feedback on every ticket.</div>
+          <div class="col-metric msb">90% accuracy out of the box</div>
+        </div>
+        <div>
+          <div class="col-label amz">Amazon</div>
+          <div class="col-text">Built the ML classifier that handled 11,700+ seller support inquiries. Each one read, categorized, and routed to the correct team. Built the feedback loop where agent corrections retrained the model continuously.</div>
+          <div class="col-metric amz">31% accuracy improvement</div>
+        </div>
+      </div>
+      <blockquote class="customer-quote">
+        "We're seeing above 90% accuracy with MSPbots, a significant improvement over our previous solution that was costing us over $1,000/month plus a dedicated high-salary resource."
+        <div class="src">MSPBots customer</div>
+      </blockquote>
+      <p class="bridge">Same pipeline: unstructured text comes in, the system figures out what it means, routes it to the right handler, learns from corrections. MSPBots does it for MSP tickets. I did it for Amazon seller inquiries.</p>
+    </div>
+  </div>
+
+  <div class="product" id="p2">
+    <div class="product-head" onclick="toggle('p2')">
+      <span class="p-name">Next Ticket</span>
+      <span class="p-hint">click to expand</span>
+      <span class="p-spacer"></span>
+      <span class="p-one">prioritization + matching</span>
+      <span class="p-arrow">&#9662;</span>
+    </div>
+    <div class="product-body">
+      <div class="col-pair">
+        <div>
+          <div class="col-label msb">MSPBots</div>
+          <div class="col-text">Scores every open ticket by SLA urgency, client tier, and complexity. Matches to the technician with the right skills. Pushes the highest-priority ticket to their Teams or Slack. Eliminates cherry-picking.</div>
+          <div class="col-metric msb">80% less dispatcher time</div>
+        </div>
+        <div>
+          <div class="col-label amz">Amazon</div>
+          <div class="col-text">Built the recommendation engine that matched products to sellers based on predicted sales potential. Each product scored into A-D bands, matched to the best-fit seller. Ran the same logic for marketplace launches in Canada and Mexico.</div>
+          <div class="col-metric amz">$6.9B in new sales influenced</div>
+        </div>
+      </div>
+      <blockquote class="customer-quote">
+        "Next Ticket let us retire manual triage and move that person into a full-time technician role. Midday open tickets went from ~36 to ~80."
+        <div class="src">MSPBots customer</div>
+      </blockquote>
+      <p class="bridge">Both are matching engines. Score items in a queue by importance, match to the best handler by capability, push the result to where they already work. MSPBots matches tickets to techs. I matched products to sellers.</p>
+    </div>
+  </div>
+
+  <div class="product" id="p3">
+    <div class="product-head" onclick="toggle('p3')">
+      <span class="p-name">BI Dashboards</span>
+      <span class="p-hint">click to expand</span>
+      <span class="p-spacer"></span>
+      <span class="p-one">visibility from 80+ sources</span>
+      <span class="p-arrow">&#9662;</span>
+    </div>
+    <div class="product-body">
+      <div class="col-pair">
+        <div>
+          <div class="col-label msb">MSPBots</div>
+          <div class="col-text">Connects to 80+ tools MSPs use daily. Ships 5,000+ pre-built dashboard templates for SLA, utilization, ticket health, revenue. Lets MSPs benchmark against peers.</div>
+          <div class="col-metric msb">5,000+ templates, real-time sync</div>
+        </div>
+        <div>
+          <div class="col-label amz">Amazon</div>
+          <div class="col-text">Ingested from seller systems across three countries with different formats. Processed 1B+ catalog records weekly. Built the real-time dashboard that PMs and sellers used daily to prioritize onboarding. Automated monthly reporting.</div>
+          <div class="col-metric amz">1B+ records, 48 hrs/month saved</div>
+        </div>
+      </div>
+      <blockquote class="customer-quote">
+        "I use it every day to check SLA metrics, see what happened yesterday, and spot repetitive issues. It gives us a clear, real-time picture of the environment."
+        <div class="src">MSPBots customer</div>
+      </blockquote>
+      <p class="bridge">Same challenge: pull from dozens of messy sources and turn it into one view that people trust enough to make decisions on every morning.</p>
+    </div>
+  </div>
+
+  <div class="product" id="p4">
+    <div class="product-head" onclick="toggle('p4')">
+      <span class="p-name">Micro Training Bots</span>
+      <span class="p-hint">click to expand</span>
+      <span class="p-spacer"></span>
+      <span class="p-one">process compliance</span>
+      <span class="p-arrow">&#9662;</span>
+    </div>
+    <div class="product-body">
+      <div class="col-pair">
+        <div>
+          <div class="col-label msb">MSPBots</div>
+          <div class="col-text">Managers define rules in plain language. Bots watch KPIs and ticket status in real time. When something slips, a nudge goes to the right person in Teams or Slack. Tracks compliance trends over time.</div>
+          <div class="col-metric msb">24/7 process monitoring</div>
+        </div>
+        <div>
+          <div class="col-label amz">Amazon</div>
+          <div class="col-text">Defined SLA thresholds across engineering and business teams. Built monitoring that watched KPIs across ML pipelines and surfaced failures to the right team automatically. Automated reporting cadence.</div>
+          <div class="col-metric amz">22% fewer bottlenecks</div>
+        </div>
+      </div>
+      <blockquote class="customer-quote">
+        "My team gets an alert: 'heads up, you've got a firm coming up,' 'you're late,' and then it escalates to the service manager and me."
+        <div class="src">MSPBots customer</div>
+      </blockquote>
+      <p class="bridge">Same insight: people don't follow processes, and more training doesn't fix it. Real-time nudges at the moment someone is about to skip a step does.</p>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+
+  <h2>Three more specifics</h2>
+
+  <div class="fit-item">
+    <p class="fit-text">Sourced 250,000+ offline point-of-sale records from Nielsen and NPD. Data that had never been inside Amazon's systems. Transformed them into structured training datasets for ML models. That pipeline surfaced products that internal data alone would never have found. $450M in annualized GMV.</p>
+    <p class="fit-context">Went outside the building for data when internal sources weren't enough</p>
+  </div>
+
+  <div class="fit-item">
+    <p class="fit-text">Two teams at Amazon were building ML models for the same catalog, independently. One for product recommendations, one for brand tagging. Different schemas, different pipelines, duplicated infrastructure. Wrote the shared architecture spec that unified both. The hard part wasn't technical. It was getting two teams who were used to working alone to agree on shared definitions. Once they did, models could be reused across both and new features shipped in half the time.</p>
+    <p class="fit-context">The hard part was alignment, not architecture</p>
+  </div>
+
+  <div class="fit-item">
+    <p class="fit-text">Amazon's product catalog had the same brand listed hundreds of different ways across 400 million records. Samsung, SAMSUNG, Samsung Electronics, samsung corp. Built the pipeline that consolidated over a million brand identities into clean, deduplicated records. Every ML model that depended on brand data got more accurate without being retouched. 12% fewer labeling defects across the entire catalog.</p>
+    <p class="fit-context">Fixed the data once. Every system downstream got better automatically.</p>
+  </div>
+
+  <hr class="divider"/>
+
+  <div class="close-section">
+    <div class="close-meta">Vijay Sridhar &middot; vijaysridhar2012@gmail.com &middot; linkedin.com/in/sridv</div>
+  </div>
+
+</div>
+
+<script>
+function toggle(id){
+  const el=document.getElementById(id);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.product').forEach(p=>p.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+</script>
+</body>
+</html>
